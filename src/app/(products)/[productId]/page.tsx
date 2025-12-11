@@ -1,4 +1,5 @@
 import { Product } from "@/lib/types";
+import { PDPClient } from "./client";
 
 async function getProduct(productId: string): Promise<Product> {
   const response = await fetch(
@@ -10,18 +11,17 @@ async function getProduct(productId: string): Promise<Product> {
   return response.json() as Promise<Product>;
 }
 
-export default async function ProductPage({
+export default async function PDP({
   params,
 }: {
-  params: { productId: string };
+  params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
   const product = await getProduct(productId);
+
   return (
     <>
-      <h1>{product.name}</h1>
-      <p>{product.price}</p>
-      <p>{product.description}</p>
+      <PDPClient product={product} />
     </>
   );
 }
