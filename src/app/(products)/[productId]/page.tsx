@@ -1,26 +1,28 @@
-import { Product } from "@/lib/types";
+import { productService } from "@/data/productService";
 import { PDPClient } from "./client";
-
-async function getProduct(productId: string): Promise<Product> {
-  const response = await fetch(
-    `http://localhost:3000/api/products/${productId}`
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch product");
-  }
-  return response.json() as Promise<Product>;
-}
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export default async function PDP({
   params,
 }: {
-  params: Promise<{ productId: string }>;
+  params: Promise<{ productId: number }>;
 }) {
   const { productId } = await params;
-  const product = await getProduct(productId);
+  const product = await productService.getProductById(productId);
+  if (!product) return notFound();
 
   return (
     <>
+      <Image
+        src={product.imageUrl}
+        alt={product.name}
+        width={100}
+        height={100}
+      />
+      <h1>{product.name}</h1>
+      <p>{product.price}</p>
+      <p>{product.description}</p>
       <PDPClient product={product} />
     </>
   );
