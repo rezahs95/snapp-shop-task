@@ -1,0 +1,27 @@
+"use client";
+
+import { createPortal } from "react-dom";
+import { useCart } from "@/context/CartContext";
+import { CartItem } from "@/lib/types";
+import styles from "./cart-modal.module.css";
+
+export function CartModal() {
+  const { items, isCartModalOpen, setIsCartModalOpen } = useCart();
+
+  if (!isCartModalOpen) return null;
+
+  return createPortal(
+    <div className={styles.cartModal}>
+      <h1>Cart</h1>
+      {items.map((item: CartItem) => (
+        <div key={item.id}>
+          <h2>{item.name}</h2>
+          <p>{item.price}</p>
+          <p>{item.quantity}</p>
+        </div>
+      ))}
+      <button onClick={() => setIsCartModalOpen(false)}>Close</button>
+    </div>,
+    document.body
+  );
+}
