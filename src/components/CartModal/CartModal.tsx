@@ -4,11 +4,13 @@ import { createPortal } from "react-dom";
 import { useCart } from "@/context/CartContext";
 import { CartItem } from "@/lib/types";
 import styles from "./cart-modal.module.css";
+import { useMounted } from "@/hooks/useMounted";
 
 export function CartModal() {
+  const mounted = useMounted();
   const { items, isCartModalOpen, setIsCartModalOpen } = useCart();
 
-  if (!isCartModalOpen) return null;
+  if (!isCartModalOpen || !mounted) return null;
 
   return createPortal(
     <div className={styles.cartModal}>
