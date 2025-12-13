@@ -7,9 +7,8 @@ export async function GET(
 ) {
   const { id } = await params;
   const product = mockProducts.find((product) => product.id === parseInt(id));
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a delay
-  if (!product) {
+  if (!product)
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
-  }
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a delay
   return NextResponse.json(product);
 }

@@ -1,4 +1,5 @@
 import { Product } from "@/lib/types";
+import { notFound } from "next/navigation";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
@@ -10,15 +11,17 @@ export const productService = {
       });
 
       if (!res.ok) {
-        throw new Error(
-          `Service Error: Failed to fetch products (Status: ${res.status})`
+        if (res.status === 404) return notFound();
+        const error: Error & { status?: number } = new Error(
+          `Failed to fetch products list!`
         );
+        error.status = res.status;
+        throw error;
       }
 
       return await res.json();
     } catch (error) {
-      console.error("Failed to fetch products:", error);
-      return [];
+      throw error;
     }
   },
 
@@ -28,16 +31,18 @@ export const productService = {
         next: { revalidate: 60 * 60 },
       });
 
-      if (res.status === 404) return null;
-
       if (!res.ok) {
-        throw new Error(`Service Error: Failed to fetch product ${id}`);
+        if (res.status === 404) return notFound();
+        const error: Error & { status?: number } = new Error(
+          `Failed to fetch product ${id}!`
+        );
+        error.status = res.status;
+        throw error;
       }
 
       return await res.json();
     } catch (error) {
-      console.error(`Failed to fetch product ${id}:`, error);
-      return null;
+      throw error;
     }
   },
 };

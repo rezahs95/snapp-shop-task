@@ -15,13 +15,17 @@ export function CartModal() {
   return createPortal(
     <div className={styles.cartModal}>
       <h1>Cart</h1>
-      {items.map((item: CartItem) => (
-        <div key={item.id}>
-          <h2>{item.name}</h2>
-          <p>{item.price}</p>
-          <p>{item.quantity}</p>
-        </div>
-      ))}
+      {items.length > 0 ? (
+        items.map((item: CartItem) => (
+          <div key={item.id}>
+            <h2>{item.name}</h2>
+            <p>{item.price}</p>
+            <p>{item.quantity}</p>
+          </div>
+        ))
+      ) : (
+        <p>سبد خرید خالی است</p>
+      )}
       <button onClick={() => setIsCartModalOpen(false)}>Close</button>
     </div>,
     document.body

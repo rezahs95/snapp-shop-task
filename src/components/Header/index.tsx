@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-import { CartModal } from "./CartModal/CartModal";
+import { CartModal } from "@/components";
 import { useMounted } from "@/hooks/useMounted";
 
 export function Header() {
