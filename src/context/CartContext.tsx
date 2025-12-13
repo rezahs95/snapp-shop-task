@@ -42,6 +42,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("cartItems", JSON.stringify(items));
   }, [items, mounted]);
 
+  useEffect(() => {
+    function onStorage(e: StorageEvent) {
+      if (e.key !== "cartItems") return;
+      if (!e.newValue) {
+        setItems([]);
+        return;
+      }
+      try {
+        const parsed = JSON.parse(e.newValue);
+        setItems(parsed);
+      } catch {
+        setItems([]);
+      }
+    }
+
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
   const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
 
   const addToCart = (product: Product) => {
