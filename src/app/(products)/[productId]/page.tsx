@@ -1,7 +1,20 @@
 import { productService } from "@/data/product-service";
 import { PDPClient } from "./client";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ productId: number }>;
+}) {
+  const { productId } = await params;
+  const product = await productService.getProductById(productId);
+
+  return {
+    title: product?.name,
+    description: product?.description,
+  };
+}
 
 export default async function PDP({
   params,
@@ -20,7 +33,7 @@ export default async function PDP({
           width={100}
           height={100}
         />
-        <h1>{product.name}</h1>
+        <h2>{product.name}</h2>
         <p>{product.price}</p>
         <p>{product.description}</p>
         <PDPClient product={product} />

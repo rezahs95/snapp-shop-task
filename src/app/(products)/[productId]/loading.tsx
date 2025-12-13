@@ -1,3 +1,3 @@
 export default function PDPLoading() {
-  return <div>در حال بارگذاری محصول...</div>;
+  return <p>در حال بارگذاری محصول...</p>;
 }

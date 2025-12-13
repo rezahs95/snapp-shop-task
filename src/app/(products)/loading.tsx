@@ -1,3 +1,3 @@
 export default function PLPLoading() {
-  return <div>در حال بارگذاری محصولات...</div>;
+  return <p>در حال بارگذاری محصولات...</p>;
 }

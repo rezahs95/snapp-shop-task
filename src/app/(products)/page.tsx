@@ -3,6 +3,12 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { productService } from "@/data/product-service";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "محصولات",
+  description: "صفحه محصولات",
+};
 
 export default async function PLP() {
   const products = await productService.getAllProducts();
@@ -22,7 +28,7 @@ export default async function PLP() {
               width={100}
               height={100}
             />
-            <h2>{product.name}</h2>
+            <h3>{product.name}</h3>
             <p>{product.price}</p>
           </Link>
         ))}

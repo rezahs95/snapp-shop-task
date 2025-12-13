@@ -1,3 +1,3 @@
 export default function NotFound() {
-  return <div>محصولی یافت نشد!</div>;
+  return <p>محصولی یافت نشد!</p>;
 }

@@ -9,7 +9,7 @@ export default function Error({
 }) {
   return (
     <div>
-      <h1>خطایی رخ داده است!</h1>
+      <h2>خطایی رخ داده است!</h2>
       <p>{error.message}</p>
       <button onClick={reset}>تلاش مجدد</button>
       <button onClick={() => window.location.reload()}>
