@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Vazirmatn } from "next/font/google";
 import { Header } from "@/components/";
-import { CartProvider } from "@/context/CartContext";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Providers } from "./providers";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "تسک مصاحبه اسنپ شاپ",
   description: "توسط رضا رضایی",
 };
+
+const vazirFont = Vazirmatn({
+  subsets: ["arabic"],
+});
 
 export default function RootLayout({
   children,
@@ -25,12 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <CartProvider>
+    <html lang="fa" dir="rtl">
+      <body className={vazirFont.className}>
+        <Providers>
           <Header />
           {children}
-        </CartProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -1,0 +1,14 @@
+.main {
+  padding: 2rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  width: 200px;
+}
+
+.productInfo {
+  padding-right: 8px;
+}

@@ -20,6 +20,7 @@ interface CartContextType {
   totalPrice: number;
   isCartModalOpen: boolean;
   setIsCartModalOpen: (isOpen: boolean) => void;
+  toggleCartModal: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,6 +28,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const mounted = useMounted();
   const [items, setItems] = useState<CartItem[]>([]);
+  const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!mounted) return;
@@ -61,7 +63,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
+  const toggleCartModal = () => {
+    setIsCartModalOpen((prevState) => !prevState);
+  };
 
   const addToCart = (product: Product) => {
     setItems((prevItems) => {
@@ -113,6 +117,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         totalPrice,
         isCartModalOpen,
         setIsCartModalOpen,
+        toggleCartModal,
       }}
     >
       {children}
