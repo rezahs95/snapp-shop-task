@@ -5,23 +5,10 @@
   padding: 2rem;
   background-color: #181818;
   color: #ffffff;
+  width: 100vw;
 
   & a {
     text-decoration: none;
     color: #ffffff;
   }
-}
-
-.cartButton {
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #50c878;
-  border: none;
-  cursor: pointer;
-}
-
-.cartButton:hover {
-  background-color: #7cfc00;
 }

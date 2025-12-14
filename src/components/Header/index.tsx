@@ -37,8 +37,8 @@ export function Header() {
             />
           )}
         </IconButton>
+        <CartModal />
       </header>
-      <CartModal />
     </>
   );
 }

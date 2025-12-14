@@ -3,6 +3,7 @@ import { PDPClient } from "./client";
 import Image from "next/image";
 import styles from "./pdp.module.css";
 import { Card } from "@mui/material";
+import { priceFormat } from "@/lib/price-format";
 
 export async function generateMetadata({
   params,
@@ -32,15 +33,17 @@ export default async function PDP({
         <Card className={styles.productInfo}>
           <h2>{product.name}</h2>
           <p>{product.description}</p>
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            width={300}
-            height={300}
-          />
+          <div className={styles.productImageContainer}>
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              objectFit="cover"
+            />
+          </div>
         </Card>
         <Card className={styles.productActions}>
-          <p>قیمت: {product.price}</p>
+          <p>{priceFormat(product.price)}</p>
           <PDPClient product={product} />
         </Card>
       </section>

@@ -1,13 +1,12 @@
 .cartModal {
-  position: fixed;
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
-  top: 5rem;
-  left: 0;
-  width: 300px;
-  height: 300px;
-  z-index: 10;
+  width: 30vw;
+  height: 50vh;
 }
 
 .cartModalHeader {
@@ -28,19 +27,30 @@
 }
 
 .cartModalItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 1rem;
 }
 
 .cartModalItemName {
-  display: flex;
-  flex-direction: column;
+  text-align: right;
+  align-self: center;
 }
 
 .cartModalItemActions {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.cartModalItemPrice {
+  font-size: 1rem;
+  text-align: left;
+  align-self: center;
+}
+
+.cartModalEmpty {
+  text-align: center;
+  margin-top: 1rem;
 }
