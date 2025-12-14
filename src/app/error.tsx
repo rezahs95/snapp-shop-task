@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@mui/material";
+
 export default function Error({
   error,
   reset,
@@ -8,13 +10,21 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div>
+    <main className="global-error">
       <h2>خطایی رخ داده است!</h2>
-      <p>{error.message}</p>
-      <button onClick={reset}>تلاش مجدد</button>
-      <button onClick={() => window.location.reload()}>
-        بارگذاری مجدد صفحه
-      </button>
-    </div>
+      <p>متن خطا: {error.message}</p>
+      <section>
+        <Button variant="contained" color="primary" onClick={reset}>
+          تلاش مجدد
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => window.location.reload()}
+        >
+          بارگذاری مجدد صفحه
+        </Button>
+      </section>
+    </main>
   );
 }

@@ -25,19 +25,19 @@ export default async function PLP() {
             className={styles.productLink}
           >
             <Card variant="outlined" className={styles.productCard}>
-              <div className={styles.productImage}>
+              <section className={styles.productImage}>
                 <Image
                   src={product.imageUrl}
                   alt={product.name}
                   fill
                   sizes="(max-width: 600px) 100vw, 33vw"
-                  loading="eager"
+                  loading="lazy"
                 />
-              </div>
-              <div className={styles.productInfo}>
+              </section>
+              <section className={styles.productInfo}>
                 <h3>{product.name}</h3>
                 <p>{priceFormat(product.price)}</p>
-              </div>
+              </section>
             </Card>
           </Link>
         ))}

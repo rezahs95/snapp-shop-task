@@ -17,16 +17,11 @@
 }
 
 .cartModalContent {
-  padding: 1rem;
   overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .cartModalItem {
+  padding: 1rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -41,7 +36,7 @@
 .cartModalItemActions {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .cartModalItemPrice {
@@ -53,6 +48,12 @@
 .cartModalEmpty {
   text-align: center;
   margin-top: 1rem;
+}
+
+.cartModalItemNameContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 @media (max-width: 600px) {

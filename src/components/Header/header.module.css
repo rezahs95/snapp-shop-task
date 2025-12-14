@@ -5,7 +5,7 @@
   padding: 2rem;
   background-color: #181818;
   color: #ffffff;
-  width: 100vw;
+  width: 100%;
 
   & a {
     text-decoration: none;

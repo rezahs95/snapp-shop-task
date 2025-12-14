@@ -29,11 +29,11 @@ export default async function PDP({
 
   return (
     product && (
-      <section className={styles.productDetails}>
+      <main className={styles.productDetails}>
         <Card className={styles.productInfo}>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <div className={styles.productImageContainer}>
+          <p style={{ textAlign: "justify" }}>{product.description}</p>
+          <section className={styles.productImageContainer}>
             <Image
               src={product.imageUrl}
               alt={product.name}
@@ -41,13 +41,13 @@ export default async function PDP({
               sizes="100vw"
               loading="eager"
             />
-          </div>
+          </section>
         </Card>
         <Card className={styles.productActions}>
           <p>{priceFormat(product.price)}</p>
           <PDPClient product={product} />
         </Card>
-      </section>
+      </main>
     )
   );
 }
