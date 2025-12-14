@@ -1,5 +1,4 @@
 .productDetails {
-  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 13rem;
   gap: 20px;

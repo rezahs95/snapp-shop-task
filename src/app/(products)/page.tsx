@@ -30,7 +30,8 @@ export default async function PLP() {
                   src={product.imageUrl}
                   alt={product.name}
                   fill
-                  objectFit="cover"
+                  sizes="(max-width: 600px) 100vw, 33vw"
+                  loading="eager"
                 />
               </div>
               <div className={styles.productInfo}>

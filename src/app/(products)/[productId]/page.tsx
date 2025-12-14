@@ -38,7 +38,8 @@ export default async function PDP({
               src={product.imageUrl}
               alt={product.name}
               fill
-              sizes="100%"
+              sizes="100vw"
+              loading="eager"
             />
           </div>
         </Card>

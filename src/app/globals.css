@@ -28,3 +28,26 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.pdp-skeleton {
+  display: grid;
+  grid-template-columns: 1fr 13rem;
+  gap: 1rem;
+  padding: 2rem;
+}
+.plp-skeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+}
+@media (max-width: 600px) {
+  .pdp-skeleton {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .plp-skeleton {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
